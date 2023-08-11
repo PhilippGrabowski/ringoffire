@@ -1,0 +1,26 @@
+.player {
+  width: 250px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: brown;
+  padding-left: 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+
+  i {
+    font-size: 40px;
+    color: white;
+  }
+
+  span {
+    font-size: 18px;
+    color: white;
+  }
+}
+
+.player_active {
+  background-color: #d4af37;
+  filter: brightness(1.2);
+}

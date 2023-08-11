@@ -1,0 +1,94 @@
+.start_screen {
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  background-color: #404040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 400px;
+  position: relative;
+
+  img {
+    height: 200px;
+  }
+}
+
+.right_side,
+.left_side {
+  display: flex;
+  flex-direction: column;
+}
+
+.rotate_left {
+  transform: rotate(-35deg);
+}
+
+.rotate_right {
+  transform: rotate(35deg);
+}
+
+.translateUpRight {
+  transform: translateY(-70px) rotate(35deg);
+}
+
+.translateUpLeft {
+  transform: translateY(-70px) rotate(-35deg);
+}
+
+.start_game_container {
+  width: 480px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: calc(50vw - 240px);
+  background: rgb(151, 13, 16);
+  background: linear-gradient(
+    0deg,
+    rgba(151, 13, 16, 1) 0%,
+    rgba(255, 30, 33, 1) 25%,
+    rgba(255, 30, 33, 1) 75%,
+    rgba(151, 13, 16, 1) 100%
+  );
+  border: 5px solid #d4af37;
+  z-index: 2;
+
+  .sub_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    padding-inline: 100px;
+
+    div {
+      width: 100%;
+      font-size: 80px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      word-wrap: break-word;
+      line-height: 70px;
+    }
+
+    #headline {
+      font-size: 50px;
+      padding-inline: 100px;
+    }
+
+    .start_button {
+      font-size: 40px;
+      font-weight: 600;
+      color: black;
+      background: url(../../assets/img/goldbgr.png);
+      background-size: cover;
+
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+      }
+    }
+  }
+}

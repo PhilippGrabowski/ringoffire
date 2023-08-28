@@ -1,16 +1,6 @@
 <div class="start_screen">
-    <div class="left_side">
-        <img class="rotate_left" src="./../assets/img/cards/ace_1.png" alt="">
-        <img class="rotate_left translateUpLeft" src="./../assets/img/cards/clubs_1.png" alt="">
-    </div>
-    <div class="right_side">
-        <img class="rotate_right" src="./../assets/img/cards/hearts_1.png" alt="">
-        <img class="rotate_right translateUpRight" src="./../assets/img/cards/diamonds_1.png" alt="">
-    </div>
-    <div class="start_game_container">
-        <div class="sub_container">
-            <div>RING<span id="headline">OF</span>FIRE</div>
-            <div (click)="newGame()" class="start_button">Start Game</div>
-        </div>
+    <span class="header">Ring of Fire</span>
+    <div @fade-out class="black_screen"></div>
+    <div [ngStyle]="{'display': animateEnd ? 'grid' : 'none'}" (click)="newGame()" class="start_button">Start Game
     </div>
 </div>

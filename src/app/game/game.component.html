@@ -1,17 +1,37 @@
-<app-player *ngFor="let player of game?.players; let i = index" [ngStyle]="{'top.px' : i * 100 + 100}" [name]="player"
-    [activePlayer]="i == game?.currentPlayer" class="player_position"></app-player>
+<div class="player_container">
+    <div class="arrow_container">
+        <i id="arrow_up" class='bx bx-chevrons-up d-none'></i>
+        <div class="player_subcontainer">
+            <app-player *ngFor="let player of game?.players; let i = index" [name]="player"
+                [activePlayer]="i == game?.currentPlayer" (click)="openEditPlayerDialog(i)"></app-player>
+        </div>
+        <i id="arrow_down" class='bx bx-chevrons-down d-none'></i>
+    </div>
+</div>
+
+<div class="mobile_player_container">
+    <div class="arrow_container">
+        <i id="arrow_left" class='bx bx-chevrons-left d-none'></i>
+        <div class="mobile_player_subcontainer">
+            <app-mobile-player *ngFor="let player of game?.players; let i = index" [name]="player"
+                [activePlayer]="i == game?.currentPlayer" class="mobile_player"
+                (click)="openEditPlayerDialog(i)"></app-mobile-player>
+        </div>
+        <i id="arrow_right" class='bx bx-chevrons-right d-none'></i>
+    </div>
+</div>
 
 <div class="playground">
     <div class="card_stack">
         <!-- card stack -->
         <img *ngFor="let c of [0,1,2,3]; let i = index" [ngStyle]="{'right.px' : i * 5}"
-            src="../assets/img/cards/card_cover.png" alt="">
-        <img (click)="takeCard()" class="top_card" style="right: 25px" src="../assets/img/cards/card_cover.png" alt="">
+            src="../assets/img/description.jpg" alt="" id="stack_card{{ i }}">
+        <img (click)="takeCard()" id="top_card" style="right: 25px" src="../assets/img/description.jpg" alt="">
         <!-- stack for played cards -->
-        <img *ngFor="let card of game?.playedCards" class="played_card" src="../assets/img/cards/{{ card }}.png" alt="">
+        <img *ngFor="let card of game?.playedCards" class="played_card" src="../assets/img/cards/{{ card }}.jpg" alt="">
         <!-- current card (animation) -->
-        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick_card" style="right: 25px"
-            src="../assets/img/cards/{{ currentCard }}.png" alt="">
+        <img (click)="takeCard()" *ngIf="game?.pickCardAnimation" class="pick_card" style="right: 25px"
+            src="../assets/img/cards/{{ game?.currentCard }}.jpg" alt="">
     </div>
 </div>
 
@@ -19,4 +39,14 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<app-drink-challenge [card]="currentCard" class="challenge_position"></app-drink-challenge>
+<mat-card id="max_player_container" class="d-none">
+    <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle>You have reached the maximum number of players.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <button (click)="hideElement('max_player_container')" mat-button>Close</button>
+    </mat-card-actions>
+</mat-card>
+
+<app-drink-challenge [card]="game?.currentCard" class="challenge_position"></app-drink-challenge>

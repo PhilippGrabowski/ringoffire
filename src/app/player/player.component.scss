@@ -8,6 +8,7 @@
   padding-left: 20px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  cursor: pointer;
 
   i {
     font-size: 40px;
@@ -17,6 +18,13 @@
   span {
     font-size: 18px;
     color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &:hover {
+    filter: brightness(1.3);
   }
 }
 

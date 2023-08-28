@@ -8,55 +8,55 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class DrinkChallengeComponent implements OnChanges {
   action = [
     {
-      titel: 'Waterfall',
+      title: 'Waterfall',
       description:
         'Everyone should keep drinking until the person who picked the card stops. So who knows how long you will be going for!',
     },
-    { titel: 'Choose', description: 'You can choose someone to drink' },
-    { titel: 'Me', description: 'You must drink' },
-    { titel: 'Chicks', description: 'All girls must drink' },
+    { title: 'Choose', description: 'You can choose someone to drink' },
+    { title: 'Me', description: 'You must drink' },
+    { title: 'Chicks', description: 'All girls must drink' },
     {
-      titel: 'Thumb Master',
+      title: 'Thumb Master',
       description:
         'When you put your thumb on the table everyone must follow and whomever is last must drink. You are the thumb master till someone else picks a five',
     },
-    { titel: 'Boys', description: 'All guys drink' },
+    { title: 'Boys', description: 'All guys drink' },
     {
-      titel: 'Heaven',
+      title: 'Heaven',
       description: 'Point your finger in the sky, whoever is last must drink',
     },
     {
-      titel: 'Mate',
+      title: 'Mate',
       description:
         'Choose someone to drink with you. He/she, your drinking buddy, should always drink with you',
     },
     {
-      titel: 'Rhyme',
+      title: 'Rhyme',
       description:
         'Pick a word and the person next to you must rhyme with it and it goes to the next person and the next, in a circle, until someone messes up and he or she will have to drink',
     },
     {
-      titel: 'Category',
+      title: 'Category',
       description:
         'Pick a category and you go in a circle and everyone has to say a word that fits with it. Whoever messes up, drinks',
     },
     {
-      titel: 'Rule',
+      title: 'Rule',
       description:
         'You can make up any rule that everyone has to follow. Everyone (including you) must follow this rule for the whole entire game and if you disobey you must drink',
     },
     {
-      titel: 'Questions',
+      title: 'Questions',
       description:
         'Go around in a circle and you have to keep asking questions to each other. Doesn’t matter what the question is, as long as its a question. Whoever messes up and does not say a question, drinks',
     },
     {
-      titel: 'Pour!',
+      title: 'Pour!',
       description:
         'You must pour a little of your drink into the cup that is in the middle of the table. Whomever picks up the LAST king must drink the whole cup.',
     },
     {
-      titel: 'Game over',
+      title: 'Game over',
       description: 'Thanks for playing ring of fire.',
     },
   ];
@@ -69,7 +69,7 @@ export class DrinkChallengeComponent implements OnChanges {
   ngOnChanges() {
     if (this.card) {
       let cardNumber = +this.card.split('_')[1];
-      this.title = this.action[cardNumber - 1].titel;
+      this.title = this.action[cardNumber - 1].title;
       this.description = this.action[cardNumber - 1].description;
     }
   }

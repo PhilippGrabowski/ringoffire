@@ -6,6 +6,7 @@ import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-pla
 import { inject } from '@angular/core';
 import { Firestore, doc, setDoc, onSnapshot } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -17,7 +18,11 @@ export class GameComponent implements OnInit {
   game: Game | undefined;
   firestore: Firestore = inject(Firestore);
   gameId: string | undefined;
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.newGame();
@@ -100,6 +105,7 @@ export class GameComponent implements OnInit {
         case 0:
           document.getElementById('stack_card0')?.classList.add('d-none');
           topCard.classList.add('d-none');
+          this.openGameOverContainer();
           break;
       }
     }
@@ -237,7 +243,35 @@ export class GameComponent implements OnInit {
     return setDoc(gameDocumentReference, { ...this.game?.toJson() }); // Spread operator, um game object zu kopieren
   }
 
+  endGame() {
+    this.router.navigateByUrl('');
+  }
+  restartGame() {
+    this.displayNewStack();
+    this.newGame();
+    document.getElementById('game_over_container')?.classList.add('d-none');
+  }
+
+  displayNewStack() {
+    for (let i = 0; i < 4; i++) {
+      document.getElementById(`stack_card${i}`)?.classList.remove('d-none');
+    }
+    let topCard = document.getElementById('top_card');
+    if (topCard) {
+      topCard.style.right = '25px';
+      topCard.classList.remove('d-none');
+    }
+  }
+
   hideElement(id: string) {
     document.getElementById(id)?.classList.add('d-none');
+  }
+
+  openGameOverContainer() {
+    setTimeout(() => {
+      document
+        .getElementById('game_over_container')
+        ?.classList.remove('d-none');
+    }, 1000);
   }
 }

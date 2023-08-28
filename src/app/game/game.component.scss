@@ -164,6 +164,17 @@ i {
   }
 }
 
+#game_over_container {
+  width: 300px;
+  position: absolute;
+  top: calc(50% - 43.6px);
+  left: calc(50% - 150px);
+  text-align: center;
+  z-index: 3;
+  -webkit-box-shadow: -3px 1px 9px -1px #000000;
+  box-shadow: -3px 1px 9px -1px #000000;
+}
+
 @media (max-width: 1000px) {
   .player_container {
     display: none;

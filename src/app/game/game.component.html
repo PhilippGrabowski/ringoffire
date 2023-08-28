@@ -50,3 +50,14 @@
 </mat-card>
 
 <app-drink-challenge [card]="game?.currentCard" class="challenge_position"></app-drink-challenge>
+
+<mat-card id="game_over_container" class="d-none">
+    <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle>Do you want to play again?</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <button (click)="endGame()" mat-button>Quit</button>
+        <button (click)="restartGame()" mat-button>Restart</button>
+    </mat-card-actions>
+</mat-card>
